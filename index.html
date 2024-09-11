@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pelisuunnittelun iltapäiväkerho - Tehtävänanto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            gap: 20px;
+            flex-grow: 1;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-basis: calc(25% - 20px);
+            min-width: 200px;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        .card h2 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .card-content {
+            display: none;
+            margin-top: 15px;
+        }
+        .card.active {
+            flex-basis: 100%;
+        }
+        .card.active .card-content {
+            display: block;
+        }
+        .task {
+            margin-top: 10px;
+        }
+        .task h3 {
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <h1>Millainen rooli minua kiinnostaa pelisuunnittelussa?</h1>
+    <div class="container">
+        <div class="card" onclick="toggleCard(this)">
+            <h2>Pelisuunnittelija</h2>
+            <div class="card-content">
+                <p>Pelisuunnittelija luo pelin konseptin, säännöt ja mekaniikat.</p>
+                <div class="task">
+                    <h3>Helppo tehtävä:</h3>
+                    <p>Muokkaa valmiissa Scratch-projektissa pelin tavoitetta: Lisää uusi kerättävä esine ja määritä, montako esinettä pelaajan pitää kerätä voittaakseen.</p>
+                </div>
+                <div class="task">
+                    <h3>Haastava tehtävä:</h3>
+                    <p>Suunnittele ja lisää peliin uusi taso. Luo uusia esteitä ja haasteita, jotka pelaajan pitää selvittää päästäkseen maaliin.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card" onclick="toggleCard(this)">
+            <h2>Graafikko</h2>
+            <div class="card-content">
+                <p>Graafikko luo pelin visuaalisen ilmeen, hahmot ja ympäristöt.</p>
+                <div class="task">
+                    <h3>Helppo tehtävä:</h3>
+                    <p>Muokkaa valmiin Scratch-projektin pelihahmoa: Lisää hahmolle uusi asu, jota käytetään kun hahmo hyppää.</p>
+                </div>
+                <div class="task">
+                    <h3>Haastava tehtävä:</h3>
+                    <p>Suunnittele ja piirrä uusi tausta peliin. Lisää taustaan animoituja elementtejä, kuten liikkuvia pilviä tai välkkyviä tähtiä.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card" onclick="toggleCard(this)">
+            <h2>Ohjelmoija</h2>
+            <div class="card-content">
+                <p>Ohjelmoija toteuttaa pelin toiminnallisuudet ja mekaniikat koodaamalla.</p>
+                <div class="task">
+                    <h3>Helppo tehtävä:</h3>
+                    <p>Lisää valmiiseen Scratch-projektiin toiminto: Kun pelaaja kerää esineen, hahmo kasvaa hieman isommaksi.</p>
+                </div>
+                <div class="task">
+                    <h3>Haastava tehtävä:</h3>
+                    <p>Ohjelmoi peliin vihollishahmo, joka liikkuu edestakaisin tasolla. Jos pelaaja osuu viholliseen, hän menettää pisteen tai palaa alkuun.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card" onclick="toggleCard(this)">
+            <h2>Äänisuunnittelija</h2>
+            <div class="card-content">
+                <p>Äänisuunnittelija luo pelin äänimaailman, musiikin ja ääniefektit.</p>
+                <div class="task">
+                    <h3>Helppo tehtävä:</h3>
+                    <p>Lisää valmiiseen Scratch-projektiin ääniefekti, joka soi aina kun pelaaja kerää esineen.</p>
+                </div>
+                <div class="task">
+                    <h3>Haastava tehtävä:</h3>
+                    <p>Luo peliin lyhyt taustamusiikki Scratch-äänieditorilla. Ohjelmoi musiikki alkamaan pelin alussa ja loppumaan, kun pelaaja saavuttaa maalin.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleCard(clickedCard) {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                if (card === clickedCard) {
+                    card.classList.toggle('active');
+                } else {
+                    card.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
