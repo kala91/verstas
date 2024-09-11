@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stamp Machine Pelimoottori</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .world {
+      display: flex;
+      flex-wrap: wrap;
+      width: 2500px; /* 50x50 ruutua, jokainen 50px leveä */
+      height: 2500px; /* 50x50 ruutua, jokainen 50px korkea */
+      position: relative;
+    }
+
+    .tile {
+      width: 50px;
+      height: 50px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .player {
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      position: absolute;
+      transition: top 0.5s, left 0.5s;
+    }
+
+    .viewport {
+      width: 1500px; /* 30x30 ruutua, jokainen 50px leveä */
+      height: 1500px; /* 30x30 ruutua, jokainen 50px korkea */
+      overflow: hidden;
+      position: relative;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="viewport">
+    <div class="world" id="world">
+      <!-- Luodaan 50x50 ruudukko -->
+      <div class="player" id="player"></div>
+      <script>
+        for (let i = 0; i < 2500; i++) {
+          const tile = document.createElement('div');
+          tile.className = 'tile';
+          document.querySelector('.world').appendChild(tile);
+        }
+      </script>
+    </div>
+  </div>
+
+  <script>
+    const world = document.getElementById('world');
+    const player = document.getElementById('player');
+    let playerX = 1250;  // Pelaajan absoluuttinen sijainti maailmassa (keskellä)
+    let playerY = 1250;
+    let cameraX = 1250;  // Kameran absoluuttinen sijainti
+    let cameraY = 1250;
+    let targetX = playerX;  // Pelaajan kohdekoordinaatti
+    let targetY = playerY;
+
+    const moveSpeed = 5;  // Pelaajan nopeus (pikseliä per frame)
+    const cameraSpeed = 2; // Kameran nopeus (pikseliä per frame)
+
+    // Päivitä maailman sijainti suhteessa kameraan
+    function updateWorldPosition() {
+      world.style.transform = `translate(${-cameraX + 750}px, ${-cameraY + 750}px)`;
+    }
+
+    updateWorldPosition();
+
+    // Pelaajan liu'uttaminen uuteen paikkaan hiiren klikkauksesta
+    document.addEventListener('click', (event) => {
+      const rect = document.querySelector('.viewport').getBoundingClientRect();
+      const mouseX = event.clientX - rect.left;
+      const mouseY = event.clientY - rect.top;
+
+      // Laske uusi kohdekoordinaatti maailmassa
+      targetX = playerX + (mouseX - rect.width / 2);
+      targetY = playerY + (mouseY - rect.height / 2);
+    });
+
+    // Päivitä pelin tila jokaisella framella
+    function gameLoop() {
+      // Pelaajan liikuttaminen kohti kohdetta
+      const distanceX = targetX - playerX;
+      const distanceY = targetY - playerY;
+      const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
+
+      if (distance > moveSpeed) {
+        playerX += (distanceX / distance) * moveSpeed;
+        playerY += (distanceY / distance) * moveSpeed;
+        player.style.left = `${playerX - 25}px`; // Pelaajan keskipiste
+        player.style.top = `${playerY - 25}px`;
+      }
+
+      // Kameran seuraaminen hitaammalla liikkeellä
+      const cameraDistanceX = playerX - cameraX;
+      const cameraDistanceY = playerY - cameraY;
+      const cameraDistance = Math.sqrt(cameraDistanceX ** 2 + cameraDistanceY ** 2);
+
+      if (cameraDistance > cameraSpeed) {
+        cameraX += (cameraDistanceX / cameraDistance) * cameraSpeed;
+        cameraY += (cameraDistanceY / cameraDistance) * cameraSpeed;
+        updateWorldPosition();
+      }
+
+      requestAnimationFrame(gameLoop);
+    }
+
+    // Aloita pelin looppi
+    requestAnimationFrame(gameLoop);
+
+  </script>
+
+</body>
+</html>
