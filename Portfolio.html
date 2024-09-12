@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+        nav {
+            background-color: #f4f4f4;
+            padding: 0.5rem;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 10px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .project {
+            flex-basis: calc(33.333% - 20px);
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .project {
+                flex-basis: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>My Portfolio</h1>
+    </header>
+
+    <nav>
+        <!-- Voit lisätä navigoinnin tarpeiden mukaan -->
+    </nav>
+
+    <div class="container">
+        <main id="portfolio-container">
+            <!-- Tässä kohtaa tulevat projektiruudut -->
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2023 Your Name</p>
+    </footer>
+
+    <!-- Lisätään marked.js markdown-tiedostojen käsittelyyn -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script>
+        // Kun DOM sisältö on ladattu, tämä skripti luo projektien kortit
+        document.addEventListener("DOMContentLoaded", function() {
+
+            const portfolioContainer = document.getElementById("portfolio-container");
+
+            // Lista markdown-tiedostoista. Voit lisätä uusia projekteja täällä.
+            const projects = [
+                'project1.md',
+                'project2.md',
+                'project3.md'
+            ];
+
+            // Luo ruudukko jokaiselle markdown-projektille
+            projects.forEach((project, index) => {
+                const projectElement = document.createElement("div");
+                projectElement.classList.add("project");
+
+                projectElement.innerHTML = `
+                    <h3>Project ${index + 1}</h3>
+                    <p>Click to load the project</p>
+                    <button onclick="loadMarkdown('${project}')">View Project</button>
+                `;
+
+                portfolioContainer.appendChild(projectElement);
+            });
+        });
+
+        // Lataa markdown-tiedosto ja näytä sen sisältö
+        function loadMarkdown(filename) {
+            fetch(`portfolio/${filename}`)
+                .then(response => response.text())
+                .then(markdownText => {
+                    // Käytetään "marked"-kirjastoa markdownin muuttamiseksi HTML-formaattiin
+                    const htmlContent = marked.parse(markdownText);
+                    
+                    // Näytetään uusi näkymä markdown-sisällöstä
+                    document.body.innerHTML = `
+                        <div class="container">
+                            <button onclick="location.reload()">Back to Portfolio</button>
+                            ${htmlContent}
+                        </div>
+                    `;
+                })
+                .catch(error => console.error('Error loading markdown file:', error));
+        }
+    </script>
+</body>
+</html>
