@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spaceship Control Panel</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+            color: #00ffcc;
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .control-panel {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            padding: 20px;
+            background: #121212;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+        }
+
+        .panel-section {
+            flex: 1 1 30%;
+            margin: 10px;
+            padding: 20px;
+            background: #1c1c1c;
+            border-radius: 8px;
+            box-shadow: inset 0 0 10px rgba(0, 255, 204, 0.5);
+        }
+
+        .button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            background: #00ffcc;
+            border: none;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+
+        .button.success {
+            background: #00ffcc;
+        }
+
+        .button.danger {
+            background: #ff0066;
+        }
+
+        .button:hover {
+            background: #005555;
+        }
+
+        .slider {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .slider::-webkit-slider-thumb {
+            background: #00ffcc;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .progress-bar {
+            background: #333;
+            height: 24px;
+            width: 100%;
+            margin-bottom: 10px;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: inset 0 0 8px rgba(0, 255, 204, 0.5);
+        }
+
+        .progress-bar span {
+            display: block;
+            height: 100%;
+            background-color: #00ffcc;
+            width: 0;
+            transition: width 0.4s ease;
+        }
+
+        .label {
+            margin-top: 5px;
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="control-panel">
+        <div class="panel-section">
+            <button id="engineButton" class="button danger" onclick="toggleEngine()">Engine Off</button>
+            <input id="thrusterPower" type="range" min="0" max="100" value="50" class="slider" oninput="updateThrusterPower()">
+            <div class="label">Thruster Power: <span id="thrusterPowerLabel">50%</span></div>
+        </div>
+
+        <div class="panel-section">
+            <button id="shieldButton" class="button danger" onclick="toggleShield()">Shields Off</button>
+            <button id="weaponsButton" class="button danger" onclick="toggleWeapons()">Weapons Offline</button>
+            <button id="lightsButton" class="button danger" onclick="toggleLights()">Lights Off</button>
+        </div>
+
+        <div class="panel-section">
+            <div class="progress-bar">
+                <span id="oxygenBar"></span>
+            </div>
+            <input id="oxygenLevel" type="range" min="0" max="100" value="100" class="slider" oninput="updateOxygenLevel()">
+            <div class="label">Oxygen Level: <span id="oxygenLabel">100%</span></div>
+
+            <div class="progress-bar">
+                <span id="foodBar"></span>
+            </div>
+            <input id="foodSupply" type="range" min="0" max="100" value="100" class="slider" oninput="updateFoodSupply()">
+            <div class="label">Food Supply: <span id="foodLabel">100%</span></div>
+
+            <div class="progress-bar">
+                <span id="powerBar"></span>
+            </div>
+            <input id="powerLevel" type="range" min="0" max="100" value="100" class="slider" oninput="updatePowerLevel()">
+            <div class="label">Power Level: <span id="powerLabel">100%</span></div>
+
+            <button id="cabinButton" class="button danger" onclick="toggleCabin()">Cabin Offline</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleButton(id) {
+            const button = document.getElementById(id);
+            button.textContent = button.textContent.includes("On") ? button.textContent.replace("On", "Off") : button.textContent.replace("Off", "On");
+            button.classList.toggle("success");
+            button.classList.toggle("danger");
+        }
+
+        function toggleEngine() {
+            toggleButton("engineButton");
+        }
+
+        function toggleShield() {
+            toggleButton("shieldButton");
+        }
+
+        function toggleWeapons() {
+            toggleButton("weaponsButton");
+        }
+
+        function toggleLights() {
+            toggleButton("lightsButton");
+        }
+
+        function toggleCabin() {
+            toggleButton("cabinButton");
+        }
+
+        function updateThrusterPower() {
+            const slider = document.getElementById("thrusterPower");
+            document.getElementById("thrusterPowerLabel").textContent = `${slider.value}%`;
+        }
+
+        function updateOxygenLevel() {
+            const slider = document.getElementById("oxygenLevel");
+            const bar = document.getElementById("oxygenBar");
+            const label = document.getElementById("oxygenLabel");
+            label.textContent = `${slider.value}%`;
+            bar.style.width = `${slider.value}%`;
+        }
+
+        function updateFoodSupply() {
+            const slider = document.getElementById("foodSupply");
+            const bar = document.getElementById("foodBar");
+            const label = document.getElementById("foodLabel");
+            label.textContent = `${slider.value}%`;
+            bar.style.width = `${slider.value}%`;
+        }
+
+        function updatePowerLevel() {
+            const slider = document.getElementById("powerLevel");
+            const bar = document.getElementById("powerBar");
+            const label = document.getElementById("powerLabel");
+            label.textContent = `${slider.value}%`;
+            bar.style.width = `${slider.value}%`;
+        }
+    </script>
+</body>
+
+</html>
+
