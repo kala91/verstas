@@ -14,39 +14,56 @@
     </header>
     <nav>
         <ul>
-            <li><a href="#etusivu">Etusivu</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#projektit">Projektit</a></li>
+            <li><a href="#etusivu" data-file="etusivu.html">Etusivu</a></li>
+            <li><a href="#portfolio" data-file="portfolio.html">Portfolio</a></li>
+            <li><a href="#demot" data-file="demot.html">Demot</a></li>
+            <li><a href="#minusta" data-file="minusta.html">Minusta</a></li>
         </ul>
     </nav>
     <div class="container">
-        <main>
-            <div class="laatikko">
-                <h2>ERPG</h2>
-                <p>Ikuisuus projektini tehdä mahdollisimman simppeli formaatti jolla toteuttaa ja rakentaa opetuksellisia peliympäristöjä suoraan selaimelle</p>
-                <li><a href="ERPG-test.html">ERPG-test</a></li>
-            </div>
-            <div class="laatikko">
-                <h2>Hallintapaneeli</h2>
-                <p>verkkosivu ulkoasu harjoituksia joilla olen testannut feikki avaruusaluksen paneejeita.</p>
-                <li><a href="ohjaamo1.html">Ohjaamo 1</a></li>
-            </div>
-            <div class="laatikko">
-                <h2>Portfolio</h2>
-                <p>Portfolio harjoitus jossa javascript rakentaa markdovn tiedostoista dynaamisesti portfoliota staattiselle sivulle</p>
-                <li><a href="Portfolio.html">Portfolio</a></li>
-            </div>
-            <div class="laatikko">
-                <h2>sivunkasaus testi</h2>
-                <p>Staattisen ja dynaamisen sivun testi perus elementeillä</p>
-                <li><a href="staticdynamic.html">staticdynamic</a></li>
-            </div>
-            <!-- Lisää projekteja tarvittaessa -->
+        <!-- Varoitus jos käyttäjän selain ei käytä javascriptia-->
+        <noscript>
+            <p>Huom! Sivusto vaatii JavaScriptin toimiakseen kunnolla. Ole hyvä ja ota JavaScript käyttöön tai käy <a href="etusivu.html">tässä staattisessa versiossa</a>.</p>
+        </noscript>
+          
+        <main id="content">
+            <p>Ladataan sisältöä...</p>
         </main>
     </div>
+
     <footer>
         <p>&copy; 2024 Aleksi Höylän teknologiaverstas.</p>
-
     </footer>
+
+    <script>
+    // Funktio, joka hakee ulkoisen HTML-fragmentin ja sijoittaa sen #content elementtiin
+        function loadContent(filename) {
+        fetch(filename)
+            .then(response => {
+            if (!response.ok) {
+                throw new Error('Verkkovirhe: ' + response.status);
+            }
+            return response.text();
+            })
+            .then(html => {
+            document.getElementById('content').innerHTML = html;
+            })
+            .catch(error => {
+            console.error('Sisällön latausvirhe:', error);
+            });
+        }
+        
+        // Lisätään event listener jokaiselle navigaation linkille
+        document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // estää oletustoiminnon (selaimen scrollauksen kohteeseen)
+            const file = this.dataset.file; // haetaan data-file arvo
+            loadContent(file); // kutsutaan loadContent-funktiota
+        });
+        });
+        
+        // Ladataan oletuksena esim. etusivu heti sivun latauksen yhteydessä
+        loadContent('etusivu.html');
+    </script>
 </body>
 </html>
