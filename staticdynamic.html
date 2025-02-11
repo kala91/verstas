@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teknologia Verstas</title>
+    <link rel="stylesheet" href="./tyylit/laatikkotyyli.css">
+
+</head>
+
+<body>
+    <header>
+        <h1>Teknologia Verstas</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#etusivu">Etusivu</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#projektit">Projektit</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <main id="content">
+            <p>Ladataan sisältöä...</p>
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Aleksi Höylän teknologiaverstas.</p>
+    </footer>
+    <script>
+        // Esimerkki: ladataan "minusta.html" tiedoston sisältö
+        function loadContent(filename) {
+          fetch(filename)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Verkkovirhe: ' + response.status);
+              }
+              return response.text();
+            })
+            .then(html => {
+              document.getElementById('content').innerHTML = html;
+            })
+            .catch(error => {
+              console.error('Sisällön latausvirhe:', error);
+            });
+        }
+        
+        // Ladataan oletuksena "minusta.html" kun sivu avataan
+        loadContent('ohjaamo1.html');
+      </script>
+</body>
+</html>

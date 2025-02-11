@@ -37,7 +37,7 @@ main {
     flex-wrap: wrap;
     justify-content: space-between;
 }
-.project {
+.laatikko {
     flex-basis: calc(33.333% - 20px);
     margin-bottom: 20px;
     background-color: #f9f9f9;
@@ -51,13 +51,22 @@ footer {
     padding: 1rem;
     margin-top: 20px;
 }
+button {
+    margin: 0 10px;
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: #333;
+}
 @media (max-width: 768px) {
-    .project {
+    .laatikko {
         flex-basis: calc(50% - 20px);
     }
 }
 @media (max-width: 480px) {
-    .project {
+    .laatikko {
         flex-basis: 100%;
     }
 }

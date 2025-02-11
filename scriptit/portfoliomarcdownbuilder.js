@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Luo ruudukko jokaiselle markdown-projektille
     projects.forEach((project, index) => {
         const projectElement = document.createElement("div");
-        projectElement.classList.add("project");
+        projectElement.classList.add("laatikko");
 
         projectElement.innerHTML = `
             <h3>Project ${index + 1}</h3>
