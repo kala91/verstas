@@ -14,9 +14,10 @@
     </header>
     <nav>
         <ul>
-            <li><a href="#etusivu">Etusivu</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#projektit">Projektit</a></li>
+            <li><a href="#etusivu" data-file="etusivu.html">Etusivu</a></li>
+            <li><a href="#portfolio" data-file="portfolio.html">Portfolio</a></li>
+            <li><a href="#projektit" data-file="projektit.html">Projektit</a></li>
+            <li><a href="#minusta" data-file="minusta.html">Minusta</a></li>
         </ul>
     </nav>
     <div class="container">
@@ -27,26 +28,36 @@
     <footer>
         <p>&copy; 2024 Aleksi Höylän teknologiaverstas.</p>
     </footer>
+
     <script>
-        // Esimerkki: ladataan "minusta.html" tiedoston sisältö
+        // Funktio, joka hakee ulkoisen HTML-fragmentin ja sijoittaa sen #content elementtiin
         function loadContent(filename) {
-          fetch(filename)
+        fetch(filename)
             .then(response => {
-              if (!response.ok) {
+            if (!response.ok) {
                 throw new Error('Verkkovirhe: ' + response.status);
-              }
-              return response.text();
+            }
+            return response.text();
             })
             .then(html => {
-              document.getElementById('content').innerHTML = html;
+            document.getElementById('content').innerHTML = html;
             })
             .catch(error => {
-              console.error('Sisällön latausvirhe:', error);
+            console.error('Sisällön latausvirhe:', error);
             });
         }
         
-        // Ladataan oletuksena "minusta.html" kun sivu avataan
-        loadContent('ohjaamo1.html');
+        // Lisätään event listener jokaiselle navigaation linkille
+        document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // estää oletustoiminnon (selaimen scrollauksen kohteeseen)
+            const file = this.dataset.file; // haetaan data-file arvo
+            loadContent(file); // kutsutaan loadContent-funktiota
+        });
+        });
+        
+        // Ladataan oletuksena esim. etusivu heti sivun latauksen yhteydessä
+        loadContent('etusivu.html');
       </script>
 </body>
 </html>
