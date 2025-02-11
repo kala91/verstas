@@ -36,7 +36,7 @@
     </footer>
 
     <script>
-    // Funktio, joka hakee ulkoisen HTML-fragmentin ja sijoittaa sen #content elementtiin
+        // Funktio, joka hakee ulkoisen HTML-fragmentin ja sijoittaa sen #content elementtiin
         function loadContent(filename) {
         fetch(filename)
             .then(response => {
@@ -53,17 +53,28 @@
             });
         }
         
-        // Lisätään event listener jokaiselle navigaation linkille
+        // Event listener navigaation linkeille
         document.querySelectorAll('nav a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault(); // estää oletustoiminnon (selaimen scrollauksen kohteeseen)
-            const file = this.dataset.file; // haetaan data-file arvo
-            loadContent(file); // kutsutaan loadContent-funktiota
+            link.addEventListener('click', function(e) {
+                e.preventDefault(); // estää oletustoiminnon
+                const file = this.dataset.file; // haetaan ladattava tiedosto
+                // Päivitetään URL-hashi vastaamaan tiedoston nimeä ilman .html -päätettä
+                window.location.hash = file.replace('.html', '');
+                loadContent(file);
+            });
         });
+    
+        // Sivun latauksen yhteydessä tarkistetaan URL-hash ja ladataan vastaava sisältö
+        window.addEventListener('load', () => {
+            // Jos hash on asetettu, yritetään ladata siitä johdettu tiedosto
+            const hash = window.location.hash.substring(1); // poistaa #-merkin
+            if (hash) {
+                loadContent(hash + '.html');
+            } else {
+                // Oletuksena ladataan etusivu
+                loadContent('etusivu.html');
+            }
         });
-        
-        // Ladataan oletuksena esim. etusivu heti sivun latauksen yhteydessä
-        loadContent('etusivu.html');
     </script>
 </body>
 </html>
