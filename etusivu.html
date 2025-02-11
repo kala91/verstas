@@ -1,5 +1,65 @@
-<div class="laatikko">
-    <h1>Etusivu</h1>
-    <p>tässä olisi etusivun sisältö html koodina</p>
-    <img src="./kuvat/Profileimage_Aleksi_keltainenhattu_small.png" alt="omakuva" width="300">
+<style>
+    .content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+p {
+    line-height: 1.6;
+}
+
+.btn {
+    display: block;
+    width: max-content;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.btn:hover {
+    background: #555;
+}
+</style>
+<div class="content">
+    <section class="intro">
+        <h1>Aleksi Höylä</h1>
+        <p>
+            Olen monialainen taiteilija, koodari ja teknologia-intoilija. Sivustoltani löydät 
+            <strong>teatteriportfolioni</strong>, <strong>interaktiivisia demoja</strong> ja 
+            <strong>koodausprojekteja</strong>, joissa yhdistyvät luovuus ja teknologia.
+        </p>
+    </section>
+
+    <section class="portfolio">
+        <h2>Teatteriportfolio</h2>
+        <p>
+            Esittävän taiteen parissa olen työskennellyt näyttelijänä, ohjaajana ja muusikkona. 
+            Mukana projekteja katuteatterista fyysiseen teatteriin ja improvisaatioon.
+        </p>
+        <a href="/portfolio" class="btn">Katso teatteriprojektit</a>
+    </section>
+
+    <section class="projects">
+        <h2>Koodaus ja demot</h2>
+        <p>
+            Teen erilaisia koodausprojekteja ja kokeellisia demoja. Täällä voit testata 
+            luomiani interaktiivisia sovelluksia ja pelejä.
+        </p>
+        <a href="/demo" class="btn">Tutustu demoihin</a>
+    </section>
+
+    <section class="contact">
+        <h2>Ota yhteyttä</h2>
+        <p>Kiinnostuitko yhteistyöstä? Voit lähettää minulle viestiä sähköpostilla tai ottaa yhteyttä somessa.</p>
+        <a href="mailto:aleksi.hoyla@outlook.com" class="btn">Lähetä sähköpostia</a>
+    </section>
 </div>
