@@ -47,19 +47,55 @@
 }
 </style>
 
-    <div class="container">
-        <h2 style="text-align: center; color: #667eea;">💼 Projektit</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto 30px;">
-            Tässä on kokoelma projektejani eri alustoilta. Klikkaa projektia nähdäksesi lisätietoja 
-            tai kokeillaksesi demoa.
-        </p>
-        <main id="portfolio-container">
-            <!-- Tässä kohtaa tulevat projektiruudut -->
-        </main>
-    
+<div style="text-align: center; margin-bottom: 30px;">
+    <h1 style="color: #667eea;">💼 Projektit</h1>
+    <p style="max-width: 800px; margin: 0 auto;">
+        Tässä on kokoelma projektejani eri alustoilta. Klikkaa projektia nähdäksesi lisätietoja 
+        tai kokeillaksesi demoa.
+    </p>
+</div>
+
+<main style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+    <div class="laatikko project-card">
+        <h3>ERPG - Educational RPG Engine</h3>
+        <p>Simppeli formaatti opetuksellisten peliympäristöjen rakentamiseen selaimella. Ikuisuusprojektini, jossa yhdistyvät pelinkehitys ja opetus.</p>
+        <div class="project-tags">
+            <span class="project-tag">JavaScript</span>
+            <span class="project-tag">Game Dev</span>
+            <span class="project-tag">Education</span>
+        </div>
+        <a href="./demot/ERPG-test.html" target="_blank" class="project-btn">🚀 Kokeile demoa</a>
     </div>
 
-    <!-- Lisätään marked.js markdown-tiedostojen käsittelyyn -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="./scriptit/portfoliomarcdownbuilder.js"></script>
-    
+    <div class="laatikko project-card">
+        <h3>Teknologia Verstas</h3>
+        <p>Tämä sivusto - henkilökohtainen portfolio ja testausympäristö. Rakennettu puhtaalla HTML:llä, CSS:llä ja JavaScriptillä.</p>
+        <div class="project-tags">
+            <span class="project-tag">Web Dev</span>
+            <span class="project-tag">Portfolio</span>
+            <span class="project-tag">GitHub</span>
+        </div>
+        <a href="https://github.com/kala91/verstas" target="_blank" class="project-btn">🔗 Avaa GitHub</a>
+    </div>
+
+    <div class="laatikko project-card">
+        <h3>Hallintapaneeli kokeilut</h3>
+        <p>Feikki avaruusaluksen ohjauspaneeli - UI/UX harjoituksia ja käyttöliittymäsuunnittelua sci-fi teemalla.</p>
+        <div class="project-tags">
+            <span class="project-tag">UI/UX</span>
+            <span class="project-tag">JavaScript</span>
+            <span class="project-tag">CSS</span>
+        </div>
+        <a href="./demot/ohjaamo1.html" target="_blank" class="project-btn">🚀 Kokeile demoa</a>
+    </div>
+
+    <div class="laatikko project-card">
+        <h3>Staattinen vs Dynaaminen</h3>
+        <p>Vertailu staattisen ja dynaamisen sivun rakentamisesta. Opetuksellinen demo web-kehityksen perusteista.</p>
+        <div class="project-tags">
+            <span class="project-tag">Web Dev</span>
+            <span class="project-tag">Tutorial</span>
+        </div>
+        <a href="./demot/staticdynamic.html" target="_blank" class="project-btn">🚀 Kokeile demoa</a>
+    </div>
+</main>

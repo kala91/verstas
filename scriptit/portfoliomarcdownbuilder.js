@@ -1,7 +1,15 @@
-// Kun DOM sisältö on ladattu, tämä skripti luo projektien kortit
-document.addEventListener("DOMContentLoaded", function() {
-
+// Funktio projektien lataamiseen
+function loadProjects() {
     const portfolioContainer = document.getElementById("portfolio-container");
+    
+    // Jos container ei ole vielä DOM:ssa, odota hetki
+    if (!portfolioContainer) {
+        setTimeout(loadProjects, 100);
+        return;
+    }
+    
+    // Tyhjennä container ennen uusien projektien lisäämistä
+    portfolioContainer.innerHTML = '';
 
     // Lista projekteista. Voit lisätä uusia projekteja täällä.
     // type: 'markdown' lataa .md tiedoston, 'external' avaa linkin uuteen välilehteen, 'demo' linkki demoihin
@@ -65,7 +73,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
         portfolioContainer.appendChild(projectElement);
     });
-});
+}
+
+// Käynnistä lataus heti kun skripti suoritetaan
+loadProjects();
+
+// Varmista myös DOMContentLoaded:lla
+document.addEventListener("DOMContentLoaded", loadProjects);
 
 // Lataa markdown-tiedosto ja näytä sen sisältö
 function loadMarkdown(filename) {
