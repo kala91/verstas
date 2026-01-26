@@ -1,14 +1,47 @@
-## Verstas - personal, virtual testing workshop
-This repo holds 3 purposes
- - Is my "homepage"
- - is my "portfolio"
- - and is my testin showcase
- 
- ## Language
- Documentation will be mix of finnish and english (this is my hobby project) and the coding languages are mainly javascript and html. 
+## Verstas - Personal Portfolio & Testing Workshop
 
- ## Links
+Henkilökohtainen portfoliosivusto ja teknologiaverstas.
 
-Linkki itse sivulle jos olen sen jälleen unohtanut.
-username.github.io/repo
-https://kala91.github.io/verstas
+### 🎯 Tarkoitus
+
+Tämä repository palvelee kolmea päätarkoitusta:
+1. **Portfolio** - Esittely projekteilleni eri alustoilta ja palveluista
+2. **Landing Page** - Verkostoitumista ja yhteistyötä varten  
+3. **Testing Showcase** - Testausympäristö ja demojen esittelypaikka
+
+### 🌐 Sivusto
+
+Sivusto on julkaistu GitHub Pagesissa:
+**https://kala91.github.io/verstas**
+
+### 🛠️ Teknologiat
+
+- HTML5
+- CSS3
+- JavaScript (Vanilla JS)
+- Markdown (portfolioprojekteihin)
+
+### 📝 Kieli
+
+Dokumentaatio on sekoitus suomea ja englantia (tämä on harrastusprojekti).
+Koodissa käytän pääasiassa JavaScriptiä ja HTML:ää.
+
+### 🚀 Käyttö
+
+Sivusto on staattinen ja toimii suoraan selaimessa. Avaa `index.html` tai käytä GitHub Pages -osoitetta.
+
+### 📂 Rakenne
+
+- `index.html` - Pääsivu navigaatiolla
+- `etusivu.html` - Kotisivu / Landing page
+- `portfolio.html` - Portfolioprojektit
+- `demot.html` - Interaktiiviset demot
+- `minusta.html` - Tietoja minusta
+- `scriptit/` - JavaScript-tiedostot
+- `tyylit/` - CSS-tyylit
+- `demot/` - Demo-sivut
+- `portfolio/` - Portfolioprojektien tiedostot
+
+---
+
+© 2026 Aleksi Höylä

@@ -9,52 +9,121 @@ p {
 }
 
 .btn {
-    display: block;
-    width: max-content;
-    margin: 10px auto;
+    display: inline-block;
+    margin: 5px;
     padding: 10px 20px;
     background: #333;
-    color: white;
+    color: white !important;
     text-decoration: none;
     border-radius: 5px;
     text-align: center;
+    transition: background 0.3s ease;
 }
 
 .btn:hover {
     background: #555;
 }
+
+.hero {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.social-links {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.social-links a {
+    margin: 0 10px;
+    font-size: 1.2em;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.skill-tag {
+    background: #f0f0f0;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    color: #333;
+}
 </style>
 
-<div class="laatikko">
-    <h1>Aleksi Höylä</h1>
+<div class="hero">
+    <h1>👨‍💻 Aleksi Höylä</h1>
+    <p style="font-size: 1.2em; margin: 10px 0;">
+        Monialainen taiteilija, ohjelmoija ja teknologia-intoilija
+    </p>
     <p>
-        Olen monialainen taiteilija, koodari ja teknologia-intoilija. Sivustoltani löydät 
-        <strong>teatteriportfolioni</strong>, <strong>interaktiivisia demoja</strong> ja 
-        <strong>koodausprojekteja</strong>, joissa yhdistyvät luovuus ja teknologia.
+        Yhdistän luovan ajattelun ja teknisen osaamisen projektien toteuttamiseen.
+        Taustani teatterista ja esittävästä taiteesta tuo ainutlaatuisen näkökulman 
+        koodaukseen ja digitaaliseen sisällöntuotantoon.
     </p>
 </div>
 
 <div class="laatikko">
-    <h2>Teatteriportfolio</h2>
-    <p>
-        Esittävän taiteen parissa olen työskennellyt näyttelijänä, ohjaajana ja muusikkona. 
-        Mukana projekteja katuteatterista fyysiseen teatteriin ja improvisaatioon.
+    <h2>🎯 Mitä teen?</h2>
+    <div class="skills">
+        <span class="skill-tag">Web-kehitys</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">HTML/CSS</span>
+        <span class="skill-tag">Interaktiiviset sovellukset</span>
+        <span class="skill-tag">Teatteriproduktiot</span>
+        <span class="skill-tag">Luova koodaus</span>
+    </div>
+    <p style="text-align: center; margin-top: 20px;">
+        Tämä sivusto toimii portfoliona ja näyteikkunana projekteilleni eri alustoilla.
+        Täältä löydät linkit GitHub-repositorioihini, interaktiivisiin demoihin ja 
+        teatteriprojekteihini.
     </p>
-    <a href="#portfolio" class="btn">Katso teatteriprojektit</a>
 </div>
 
 <div class="laatikko">
-    <h2>Koodaus ja demot</h2>
+    <h2>💼 Portfolio</h2>
     <p>
-        Teen erilaisia koodausprojekteja ja kokeellisia demoja. Täällä voit testata 
-        luomiani interaktiivisia sovelluksia ja pelejä.
+        Katso projektejani ja töitäni eri alustoilta. Portfolio sisältää sekä 
+        ohjelmointiprojekteja että teatterituotantoja.
     </p>
-    <a href="#demot" class="btn">Tutustu demoihin</a>
+    <div style="text-align: center;">
+        <a href="#portfolio" class="btn">Näytä projektit</a>
+    </div>
 </div>
 
-<div class="contact">
-    <h2>Ota yhteyttä</h2>
-    <p>Kiinnostuitko yhteistyöstä? Voit lähettää minulle viestiä sähköpostilla tai ottaa yhteyttä somessa.</p>
-    <a href="mailto:aleksi.hoyla@outlook.com" class="btn">Lähetä sähköpostia</a>
+<div class="laatikko">
+    <h2>🚀 Demot ja kokeilut</h2>
+    <p>
+        Interaktiivisia demoja ja kokeellisia projekteja. Testaa luomiani 
+        sovelluksia, pelejä ja muita web-eksperimenttejä suoraan selaimessa.
+    </p>
+    <div style="text-align: center;">
+        <a href="#demot" class="btn">Tutustu demoihin</a>
+    </div>
+</div>
+
+<div class="laatikko">
+    <h2>🔗 Löydä minut</h2>
+    <div class="social-links">
+        <a href="https://github.com/kala91" target="_blank" class="btn" title="GitHub">
+            GitHub
+        </a>
+        <a href="mailto:aleksi.hoyla@outlook.com" class="btn" title="Sähköposti">
+            📧 Sähköposti
+        </a>
+    </div>
+    <p style="text-align: center;">
+        Kiinnostuitko yhteistyöstä tai haluat tietää lisää projekteistani? 
+        Ota rohkeasti yhteyttä!
+    </p>
 </div>
 
