@@ -45,17 +45,33 @@
 .project-btn:hover {
     background: #764ba2;
 }
+
+.portfolio-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.portfolio-description {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.portfolio-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 </style>
 
-<div style="text-align: center; margin-bottom: 30px;">
+<div class="portfolio-header">
     <h1 style="color: #667eea;">💼 Projektit</h1>
-    <p style="max-width: 800px; margin: 0 auto;">
+    <p class="portfolio-description">
         Tässä on kokoelma projektejani eri alustoilta. Klikkaa projektia nähdäksesi lisätietoja 
         tai kokeillaksesi demoa.
     </p>
 </div>
 
-<main style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+<main class="portfolio-grid">
     <div class="laatikko project-card">
         <h3>ERPG - Educational RPG Engine</h3>
         <p>Simppeli formaatti opetuksellisten peliympäristöjen rakentamiseen selaimella. Ikuisuusprojektini, jossa yhdistyvät pelinkehitys ja opetus.</p>
